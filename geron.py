@@ -34,13 +34,13 @@ if __name__ == "__main__":
             n = gsqrt(float(str))
             top.L1["text"] = n
         except:
-            top.E1["textvariable"] = "0"
+            top.L1["text"] = "ошибка"
         
     top.L1 = Label(top, text="0")
-    top.L1.pack( side = LEFT)
+    top.L1.pack()
     top.E1 = Entry(top, textvariable = "0")
-    top.E1.pack(side = RIGHT)
+    top.E1.pack()
     top.B1 = Button(top, text="compute", command=compute)
-    top.B1.pack()
+    top.B1.pack(fill = 'x')
 
     top.mainloop()
