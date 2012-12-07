@@ -7,6 +7,8 @@
 ![alt text](http://upload.wikimedia.org/math/e/0/e/e0e036e9acd6c986d8ec8ce47e7556ce.png)
 
 ```python
+from tkinter import *
+
 def gsqrt(a):
     """Возвращает квадратный корень по методу Герона
 
@@ -32,17 +34,25 @@ def gsqrt(a):
             return lsqrt(a, n, iters - 1)
     return lsqrt(a, 1, 100)
 
-while(True):
-    try:
-        msg = 'Введиче число, из которого надо извлечь корень или break для выхода: '
-        str = input(msg).replace('\n', '') # получение ввода
-        if str.lower() == "break": # проверка необходимости завершения работы
-            print("Работа завершена")
-            break
-        num = float(str)
-        print(gsqrt(num)) # печать квадратного корня
-    except:
-        print("Введены неверные данные")
+if __name__ == "__main__":
+    top = Tk()
+
+    def compute():
+        try:
+            str = top.E1.get()
+            n = gsqrt(float(str))
+            top.L1["text"] = n
+        except:
+            top.E1["textvariable"] = "0"
+        
+    top.L1 = Label(top, text="0")
+    top.L1.pack( side = LEFT)
+    top.E1 = Entry(top, textvariable = "0")
+    top.E1.pack(side = RIGHT)
+    top.B1 = Button(top, text="compute", command=compute)
+    top.B1.pack()
+
+    top.mainloop()
  ```
  
 работу выполняли: Пенкин Александр, Никита Плехов, Микаелян Андрей
